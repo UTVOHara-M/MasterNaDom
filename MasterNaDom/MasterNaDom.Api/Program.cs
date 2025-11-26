@@ -8,12 +8,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    opt.Password.RequireDigit = false;
-    opt.Password.RequireNonAlphanumeric = false;
-    opt.Password.RequireUppercase = false;
-    opt.Password.RequiredLength = 6;
+    // Отключаем все строгие проверки пароля
+    options.Password.RequireDigit = false;
+    options.Password.RequireLowercase = false;   // ← это главное
+    options.Password.RequireUppercase = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequiredLength = 6;
+    options.Password.RequiredUniqueChars = 1;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
