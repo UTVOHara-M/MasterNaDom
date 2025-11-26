@@ -1,9 +1,14 @@
+using MasterNaDom.Api.Models;
+
 namespace MasterNaDom.Api.Models;
 
 public class MasterProfile
 {
     public int Id { get; set; }
     public string UserId { get; set; } = string.Empty;
+
+    public ApplicationUser? User { get; set; }
+
     public string Category { get; set; } = string.Empty;
     public string? Description { get; set; }
     public decimal HourlyRate { get; set; }

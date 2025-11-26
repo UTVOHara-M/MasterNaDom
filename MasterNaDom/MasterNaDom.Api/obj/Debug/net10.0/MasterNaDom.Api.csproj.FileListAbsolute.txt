@@ -181,3 +181,4 @@ C:\Users\USR\MasterNaDom\MasterNaDom.Api\obj\Debug\net10.0\refint\MasterNaDom.Ap
 C:\Users\USR\MasterNaDom\MasterNaDom.Api\obj\Debug\net10.0\MasterNaDom.Api.pdb
 C:\Users\USR\MasterNaDom\MasterNaDom.Api\obj\Debug\net10.0\MasterNaDom.Api.genruntimeconfig.cache
 C:\Users\USR\MasterNaDom\MasterNaDom.Api\obj\Debug\net10.0\ref\MasterNaDom.Api.dll
+C:\Users\USR\MasterNaDom\MasterNaDom.Api\obj\Debug\net10.0\MasterNaDom.Api.sourcelink.json
