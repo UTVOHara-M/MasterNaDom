@@ -1,0 +1,25 @@
+@page
+@model MasterNaDom.Api.Pages.MastersModel
+@{
+    ViewData["Title"] = "Мастера в Москве";
+}
+
+<h2 class="mb-4">Мастера в Москве (@Model.Masters.Count человек)</h2>
+
+<div class="row row-cols-1 row-cols-md-3 g-4">
+@foreach (var m in Model.Masters)
+{
+    <div class="col">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">@m.FullName</h5>
+                <p class="card-text text-primary fw-bold">@m.Category</p>
+                <p class="card-text">@m.HourlyRate ₽/час</p>
+            </div>
+            <div class="card-footer text-muted">
+                Москва
+            </div>
+        </div>
+    </div>
+}
+</div>

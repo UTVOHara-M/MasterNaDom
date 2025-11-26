@@ -5,37 +5,46 @@ using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// БД + Identity
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(opt =>
 {
-    // Отключаем все строгие проверки пароля
-    options.Password.RequireDigit = false;
-    options.Password.RequireLowercase = false;   // ← это главное
-    options.Password.RequireUppercase = false;
-    options.Password.RequireNonAlphanumeric = false;
-    options.Password.RequiredLength = 6;
-    options.Password.RequiredUniqueChars = 1;
+    opt.Password.RequireDigit = false;
+    opt.Password.RequireLowercase = false;
+    opt.Password.RequireUppercase = false;
+    opt.Password.RequireNonAlphanumeric = false;
+    opt.Password.RequiredLength = 6;
 })
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
 
+// API + Razor Pages
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
+// Swagger только в разработке
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Главная страница — всегда /Index
+app.MapGet("/", () => Results.Redirect("/Index"));
+
+app.UseStaticFiles();           // ← важно!
+app.UseRouting();
+
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapRazorPages();            // ← обязательно
 app.MapControllers();
 
 app.Run();

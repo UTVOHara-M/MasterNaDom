@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MasterNaDom.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+919ce51d97fb01b7525035faf9910d5cdad79e61")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+afe5d1b1e4bb0bda6086f85bdeec5200431d4daf")]
 [assembly: System.Reflection.AssemblyProductAttribute("MasterNaDom.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MasterNaDom.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
